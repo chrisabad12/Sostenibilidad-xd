@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Puntos de Recogida - Marina Alta</title>
+  <meta name="description" content="Mapa y listado profesional de puntos verdes y recogida de residuos en la Marina Alta (Comunidad Valenciana)." />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <!-- Icon (optional) -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+
+  <!-- Project styles -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="" alt="" aria-hidden class="logo" />
+      <div>
+        <h1>Puntos Verdes · Marina Alta</h1>
+        <p class="tag">Mapa oficial — reciclaje y recogida de residuos</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="searchbar">
+        <input id="searchInput" placeholder="Buscar municipio, dirección o punto (ej. Dénia)" />
+        <button id="searchBtn" class="btn">Buscar</button>
+      </div>
+      <button id="togglePanel" class="btn ghost">Panel</button>
+    </div>
+  </header>
+
+  <div class="app-grid">
+    <aside class="sidebar" id="sidebar">
+      <section class="panel-header">
+        <h2>Filtros</h2>
+        <p class="muted">Filtra por tipo y busca en la lista. Datos de ejemplo — sustituye por datos oficiales.</p>
+      </section>
+
+      <div class="controls">
+        <label>Tipo</label>
+        <select id="typeFilter">
+          <option value="all">Todos</option>
+          <option value="punto_verde">Punto Verde</option>
+          <option value="ecoparque">Ecoparque</option>
+          <option value="contenedor">Contenedor</option>
+        </select>
+
+        <label>Ordenar</label>
+        <select id="sortBy">
+          <option value="default">Relevancia</option>
+          <option value="town">Municipio (A-Z)</option>
+        </select>
+
+        <div class="sidebar-actions">
+          <button id="locateBtn" class="btn">Mi ubicación</button>
+          <button id="exportBtn" class="btn ghost">Exportar CSV</button>
+        </div>
+      </div>
+
+      <section class="list-wrap" id="listWrap">
+        <h3>Listado</h3>
+        <div id="list" role="list"></div>
+      </section>
+
+      <footer class="panel-footer">
+        <small>Consejo: conecta este proyecto a datos abiertos (GeoJSON / API municipal) para mostrar ubicaciones oficiales.</small>
+      </footer>
+    </aside>
+
+    <main class="map-area">
+      <div id="map"></div>
+
+      <div class="floating">
+        <div class="legend">
+          <div><span class="dot green"></span> Punto Verde</div>
+          <div><span class="dot amber"></span> Ecoparque</div>
+          <div><span class="dot blue"></span> Contenedor</div>
+        </div>
+
+        <div class="quick-filters">
+          <button data-type="all" class="chip active">Todos</button>
+          <button data-type="punto_verde" class="chip">Punto Verde</button>
+          <button data-type="ecoparque" class="chip">Ecoparque</button>
+          <button data-type="contenedor" class="chip">Contenedor</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- Project JS -->
+  <script src="js/mapa.js"></script>
+</body>
+</html>
